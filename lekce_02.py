@@ -1,0 +1,1 @@
+print (bool((False == False) in [False]))
