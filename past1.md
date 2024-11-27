@@ -1,1 +1,1 @@
-To jsem zvědavý
+

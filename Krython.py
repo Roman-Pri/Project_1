@@ -66,7 +66,7 @@ prosinec = ["Iva", "Blanka", "Svatoslav / Svatoslava", "Barbora / Barbara", "Jit
 mesice = [leden, unor, brezen, duben, kveten, cerven, cervenec, srpen, zari, rijen, listopad, prosinec]
 print (mesice [0][4])
 print (mesice [0][9] + mesice[1][9])
-print (mesice [0][25])
+print (mesice [0].index("Zora"))
 
 
-
+print (prosinec [::3])
