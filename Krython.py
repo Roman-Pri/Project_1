@@ -70,3 +70,36 @@ print (mesice [0].index("Zora"))
 
 
 print (prosinec [::3])
+
+
+# prace se seznami
+kamaradi = ["Pavel", "Honza", "Robert", "Mira"]
+kamaradi [1] = "Petr"
+kamaradi.append ("Silva")
+kamaradi.sort ()
+print (kamaradi)
+print ("Pavel" in kamaradi and "Roman" not in kamaradi)
+
+posadka = ['Kryton', 'Dave Lister', 'Arnold J. Rimmer', 'Kocour']
+
+# Vložení prvku na konec seznamu.
+posadka.append('Dave Lister')
+# Vložení prvku na pozici 1.
+posadka.insert(1, 'Duane Dibbley')
+
+# Odstranění prvního výskytu prvku.
+posadka.remove('Dave Lister')
+# Odstranění prvku na pozici 3.
+posadka.pop(3)
+
+# Funkce sort() umí řadit i opačně, pokud jí předáme parametr reverse=True.
+posadka.sort()
+# Po seřazení seznamu má tento prvek index 0.
+print(posadka.index('Arnold J. Rimmer'))
+# Funkce len() vrací počet prvků v seznamu.
+print(len(posadka)) # 4
+
+prvocisla = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+print(min(prvocisla)) # 2
+print(max(prvocisla)) # 23
+print(sum(prvocisla)) # 100
