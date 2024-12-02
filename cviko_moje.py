@@ -46,3 +46,10 @@ print("delka jmena:", delka_jmena)
 print ("=" * delka_jmena)
 print (cele_jmeno)
 print ("=" * delka_jmena)
+
+
+new_list = ["Roman", "Petr", "Silva"]
+new_list [2] = "Honza"
+print (new_list)
+new_list.append ("Iveta")
+print (new_list)
