@@ -41,8 +41,8 @@ min_values = 1
 max_values = len(TEXTS)
 
 
-# počet slov začínajících velkým písmenem,
-# počet slov psaných velkými písmeny,
+
+
 # počet slov psaných malými písmeny,
 # počet čísel (ne cifer),
 # sumu všech čísel (ne cifer) v textu.
@@ -58,18 +58,24 @@ We have prepared 3 texts to analyze for you.""")
     print(50*"*")
     selection_number = int(input(f"Please enter a number from {min_values} to {max_values} to select text:"))
     print(50*"*")
-# Main body of program - formulas for text analysis
-    number_of_words = len(TEXTS[selection_number-1].split())
-    number_of_tc = len([word for word in TEXTS[selection_number - 1].split() if word[0].isupper()])
-    
+    # formulas for text analysis
+    number_of_words = len(TEXTS[selection_number - 1].split())
+    number_of_tc_words = len([word for word in TEXTS[selection_number - 1].split() if word[0].isupper()])
+    number_of_uc_words = len([word for word in TEXTS[selection_number - 1].split() if word.isupper() and word.isalpha()])
+    number_of_lc_words = len([word for word in TEXTS[selection_number - 1].split() if word.islower() and word.isalpha() or word.endswith(".")])
+    number_of_num_strings = len([word for word in TEXTS[selection_number - 1].split() if word.isnumeric()])
+    sum_of_numbers = sum([int(cislo) for cislo in TEXTS[selection_number - 1].find(int)])
+
 
 # Main body of program - Selections from texts
     if min_values <= selection_number <= max_values:
         print("You have selected the text number:", selection_number)
         print("There are", number_of_words, "words in the selected text.")
-        print("There are", number_of_tc, "titlecase words.")
-
-        
+        print("There are", number_of_tc_words, "titlecase words.")
+        print("There are", number_of_uc_words, "uppercase words.")
+        print("There are", number_of_lc_words, "lowercase words.")
+        print("There are", number_of_num_strings, "numeric strings.")
+        print("The sum of all numbers is", sum_of_numbers,".")
     else:
         print(50*"*")
         print("""The correct number was not entered.
