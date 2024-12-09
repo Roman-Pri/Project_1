@@ -40,14 +40,6 @@ registered_users = {"bob":"123",
 min_values = 1
 max_values = len(TEXTS)
 
-
-
-
-# počet slov psaných malými písmeny,
-# počet čísel (ne cifer),
-# sumu všech čísel (ne cifer) v textu.
-
-
 # Main body of program - Inital enter
 username = (input("Username:"))
 password = (input("Password:"))
@@ -64,10 +56,9 @@ We have prepared 3 texts to analyze for you.""")
     number_of_uc_words = len([word for word in TEXTS[selection_number - 1].split() if word.isupper() and word.isalpha()])
     number_of_lc_words = len([word for word in TEXTS[selection_number - 1].split() if word.islower() and word.isalpha() or word.endswith(".")])
     number_of_num_strings = len([word for word in TEXTS[selection_number - 1].split() if word.isnumeric()])
-    sum_of_numbers = sum([int(cislo) for cislo in TEXTS[selection_number - 1].find(int)])
+    sum_of_numbers = sum([int(num) for num in TEXTS[selection_number - 1].split() if num.isnumeric()])
 
-
-# Main body of program - Selections from texts
+# Main body of program - Analysis from texts
     if min_values <= selection_number <= max_values:
         print("You have selected the text number:", selection_number)
         print("There are", number_of_words, "words in the selected text.")
@@ -75,7 +66,7 @@ We have prepared 3 texts to analyze for you.""")
         print("There are", number_of_uc_words, "uppercase words.")
         print("There are", number_of_lc_words, "lowercase words.")
         print("There are", number_of_num_strings, "numeric strings.")
-        print("The sum of all numbers is", sum_of_numbers,".")
+        print("The sum of all numbers is", str(sum_of_numbers) + ".")
     else:
         print(50*"*")
         print("""The correct number was not entered.
