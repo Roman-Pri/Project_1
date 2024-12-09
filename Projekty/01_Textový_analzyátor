@@ -60,6 +60,7 @@ We have prepared 3 texts to analyze for you.""")
 
 # Main body of program - Analysis from texts
     if min_values <= selection_number <= max_values:
+        print(50*"*")
         print("You have selected the text number:", selection_number)
         print("There are", number_of_words, "words in the selected text.")
         print("There are", number_of_tc_words, "titlecase words.")
@@ -67,6 +68,9 @@ We have prepared 3 texts to analyze for you.""")
         print("There are", number_of_lc_words, "lowercase words.")
         print("There are", number_of_num_strings, "numeric strings.")
         print("The sum of all numbers is", str(sum_of_numbers) + ".")
+        print(50*"*")
+        print("Lenght of words------Grapfic-----number of words")
+        print(50*"*")
     else:
         print(50*"*")
         print("""The correct number was not entered.
