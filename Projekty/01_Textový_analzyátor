@@ -76,7 +76,7 @@ We have prepared 3 texts to analyze for you.""")
         print("""The correct number was not entered.
 Terminating of the program...""")
         print(50*"*")
-    #elif not selection_number.isnumeric():
+    #elif not selection_number.isnumeric(): nebo isdigit
      #   print(50*"*")
       #  print("An invalid symbol was entered")
       #  print(50*"*")
