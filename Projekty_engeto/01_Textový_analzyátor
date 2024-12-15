@@ -37,58 +37,64 @@ registered_users = {"bob":"123",
                     "mike":"password123",
                     "liz": "pass123"}
 min_values = 1
-max_values = (len(TEXTS))
+max_values = len(TEXTS)
+separator = 50*"*"
 # Main body of program - Inital enter
-username = (input("Username:"))
-password = (input("Password:"))
-if registered_users.get(username) and registered_users[username] == password:
-    print(50*"*")
-    print(f"""Welcome to our company TEXT ANALYZER, {username.upper()}.
-We have prepared 3 texts to analyze for you.""")
-    print(50*"*")
-    selection = input(f"Please enter a number from {min_values} to {max_values} to select text:")
-    if not selection.strip().isdigit():
-        print(50*"*")
-        print("An invalid symbol was entered.Terminating of the program...")
-        print(50*"*")
-    elif min_values <= int(selection) <= max_values:
+attempts = 3
+while attempts > 0:
+    username = (input("Username:"))
+    password = (input("Password:"))
+# 3 mozne opakovani v pripde spatneho zadani jmena ci hesla
+    if registered_users.get(username) and registered_users[username] == password:
+        break
+        print(separator)
+        print(f"""Welcome to our company TEXT ANALYZER, {username.upper()}.
+We have prepared {max_values} texts available for analyzing.""")
+        print(separator)
+        selection = input(f"Please enter a number from {min_values} to {max_values} to select text:")
+        if not selection.strip().isdigit():
+            print(separator)
+            print("An invalid symbol was entered.Terminating of the program...")
+            print(separator)
+        elif min_values <= int(selection) <= max_values:
         # formulas for text analysis
-        selection_number = int(selection)
-        words = TEXTS[selection_number - 1].split()
-        number_of_words = len(words)
-        number_of_tc_words = len([word for word in words if word.istitle()])
-        number_of_uc_words = len([word for word in words if word.strip('.,!?').isupper() and word.isalpha()])
-        number_of_lc_words = len([word for word in words if word.strip(".,!?").islower()])
-        number_of_num_strings = len([word for word in words if word.isdigit()])
-        sum_of_numbers = sum([int(num) for num in words if num.isdigit()])
-        print(50*"*")
-        print(f"You have selected the text number:{selection_number}")
-        print(f"There are {number_of_words} words in the selected text.")
-        print(f"There are {number_of_tc_words} titlecase words.")
-        print(f"There are {number_of_uc_words} uppercase words.")
-        print(f"There are {number_of_lc_words} lowercase words.")
-        print(f"There are {number_of_num_strings} numeric strings.")
-        print(f"The sum of all numbers is {str(sum_of_numbers)}.")
-        print(50*"*")
-        # graphic representation
-        occurrences = "OCCURRENCES"
-        lenght_counts = {}
-        for word in words: 
-            lenght = len(word.strip(".,!?"))
-            lenght_counts[lenght] = lenght_counts.get(lenght, 0) + 1
-        print(f"LEN|{occurrences:-^20}|NR")
-        for length in sorted(lenght_counts):
-                count = lenght_counts[length]
-                print(f"{length:>3}|{'#' * count:<20}|{count:>}")
-        print(50*"*")
-    else:
-        print(50*"*")
-        print("""The correct number was not entered.
+            selection_number = int(selection)
+            words = TEXTS[selection_number - 1].split()
+            number_of_words = len(words)
+            number_of_tc_words = len([word for word in words if word.istitle()])
+            number_of_uc_words = len([word for word in words if word.strip('.,!?;:').isupper() and word.isalpha()])
+            number_of_lc_words = len([word for word in words if word.strip(".,!?;:").islower()])
+            number_of_num_strings = len([word for word in words if word.isdigit()])
+            sum_of_numbers = sum([int(num) for num in words if num.isdigit()])
+            print(separator)
+            print(f"You have selected the text number:{selection_number}")
+            print(f"There are {number_of_words} words in the selected text.")
+            print(f"There are {number_of_tc_words} titlecase words.")
+            print(f"There are {number_of_uc_words} uppercase words.")
+            print(f"There are {number_of_lc_words} lowercase words.")
+            print(f"There are {number_of_num_strings} numeric strings.")
+            print(f"The sum of all numbers is {str(sum_of_numbers)}.")
+            print(separator)
+            # graphic representation
+            occurrences = "OCCURRENCES"
+            length_counts = {}
+            for word in words: 
+                length = len(word.strip(".,!?;:"))
+                length_counts[length] = length_counts.get(length, 0) + 1
+            print(f"LEN|{occurrences:-^20}|NR")
+            for length in sorted(length_counts):
+                count = length_counts[length]
+                print(f"{length:>3}|{'#' * count:<20}|{count:<3}")
+            print(separator)
+        #nabidka opakovani analyzy - doresit
+        else:
+            print(separator)
+            print("""The correct number was not entered.
 Terminating of the program...""")
-        print(50*"*")
-else:
-    print(50*"*")
-    print("""Unregistered username or password.
+        print(separator)
+    else:
+        print(separator)
+        print("""Unregistered username or password.
 Please contact the company administrator.
 Terminating of the program...""")
-    print(50*"*")
+        print(separator)
