@@ -36,10 +36,8 @@ registered_users = {"bob":"123",
                     "ann":"pass123",
                     "mike":"password123",
                     "liz": "pass123"}
-
 min_values = 1
 max_values = (len(TEXTS))
-
 # Main body of program - Inital enter
 username = (input("Username:"))
 password = (input("Password:"))
@@ -54,8 +52,8 @@ We have prepared 3 texts to analyze for you.""")
         print("An invalid symbol was entered.Terminating of the program...")
         print(50*"*")
     elif min_values <= int(selection) <= max_values:
-        selection_number = int(selection)
         # formulas for text analysis
+        selection_number = int(selection)
         words = TEXTS[selection_number - 1].split()
         number_of_words = len(words)
         number_of_tc_words = len([word for word in words if word.istitle()])
@@ -72,7 +70,19 @@ We have prepared 3 texts to analyze for you.""")
         print(f"There are {number_of_num_strings} numeric strings.")
         print(f"The sum of all numbers is {str(sum_of_numbers)}.")
         print(50*"*")
-        print("Lenght of words------Grapfic-----number of words")
+        # graphic representation
+        lenght_counts = {}
+        for word in words: 
+            lenght = len(word)
+            lenght_counts[lenght] = lenght_counts.get(lenght, 0) + 1
+        for length, count in lenght_counts.items():
+            print(f"LEN|{:>2} OCCURENCES {:>4} NR")
+            for length in sorted(lenght_counts):
+                count = lenght_counts[length]
+                print(f"{length:>2} | {'#' * count} |{count}")
+
+            #print("{:<2}{}|".format("", row), "{:>14}".format("|"))
+            #print("{:<1}{}|".format("", row_long), "{:>14}".format("|"))
         print(50*"*")
     else:
         print(50*"*")
