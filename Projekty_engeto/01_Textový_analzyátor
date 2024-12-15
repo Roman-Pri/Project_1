@@ -71,18 +71,15 @@ We have prepared 3 texts to analyze for you.""")
         print(f"The sum of all numbers is {str(sum_of_numbers)}.")
         print(50*"*")
         # graphic representation
+        occurrences = "OCCURRENCES"
         lenght_counts = {}
         for word in words: 
-            lenght = len(word)
+            lenght = len(word.strip(".,!?"))
             lenght_counts[lenght] = lenght_counts.get(lenght, 0) + 1
-        for length, count in lenght_counts.items():
-            print(f"LEN|{:>2} OCCURENCES {:>4} NR")
-            for length in sorted(lenght_counts):
+        print(f"LEN|{occurrences:-^20}|NR")
+        for length in sorted(lenght_counts):
                 count = lenght_counts[length]
-                print(f"{length:>2} | {'#' * count} |{count}")
-
-            #print("{:<2}{}|".format("", row), "{:>14}".format("|"))
-            #print("{:<1}{}|".format("", row_long), "{:>14}".format("|"))
+                print(f"{length:>3}|{'#' * count:<20}|{count:>}")
         print(50*"*")
     else:
         print(50*"*")

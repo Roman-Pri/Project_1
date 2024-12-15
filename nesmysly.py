@@ -1,3 +1,2 @@
-w = "ahoj", "mas se", "seznam"
-print(dict[len(w)])
-
+occurrences = "OCCURRENCES"
+print(f"LEN|{occurrences:-^20}|NR")
