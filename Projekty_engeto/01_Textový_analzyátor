@@ -159,3 +159,5 @@ Terminating of the program..."""
 # Hlavním cílem bylo splnit zadání, kde se vše po špatném zadání ukončovalo. 
 # Přidané while smyčky dávají opakující možnost, a uvědomuji si, 
 # že program není konsistentní vzhledem k ukončování.
+
+# Díky za feedback
