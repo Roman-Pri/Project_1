@@ -40,24 +40,23 @@ min_values = 1
 max_values = len(TEXTS)
 separator = 50*"*"
 # Main body of program - Inital enter
-attempts = 3
-while attempts > 0:
-    username = (input("Username:"))
-    password = (input("Password:"))
-# 3 mozne opakovani v pripde spatneho zadani jmena ci hesla
-    if registered_users.get(username) and registered_users[username] == password:
-        break
-        print(separator)
-        print(f"""Welcome to our company TEXT ANALYZER, {username.upper()}.
+username = (input("Username:"))
+password = (input("Password:"))
+if registered_users.get(username) and registered_users[username] == password:
+    print(separator)
+    print(f"""Welcome to our company TEXT ANALYZER, {username.upper()}.
 We have prepared {max_values} texts available for analyzing.""")
-        print(separator)
+    print(separator)
+    while True:
         selection = input(f"Please enter a number from {min_values} to {max_values} to select text:")
         if not selection.strip().isdigit():
             print(separator)
             print("An invalid symbol was entered.Terminating of the program...")
             print(separator)
+            break
+            exit()
         elif min_values <= int(selection) <= max_values:
-        # formulas for text analysis
+# formulas for text analysis
             selection_number = int(selection)
             words = TEXTS[selection_number - 1].split()
             number_of_words = len(words)
@@ -75,7 +74,7 @@ We have prepared {max_values} texts available for analyzing.""")
             print(f"There are {number_of_num_strings} numeric strings.")
             print(f"The sum of all numbers is {str(sum_of_numbers)}.")
             print(separator)
-            # graphic representation
+# graphic representation
             occurrences = "OCCURRENCES"
             length_counts = {}
             for word in words: 
@@ -86,12 +85,21 @@ We have prepared {max_values} texts available for analyzing.""")
                 count = length_counts[length]
                 print(f"{length:>3}|{'#' * count:<20}|{count:<3}")
             print(separator)
-        #nabidka opakovani analyzy - doresit
+# return back to analysis
+            while True:
+                answer = input(f"Do you want to a continue with analysis of other texts (\"yes\"/\"no\")?")
+                if answer.lower().strip() == "no":
+                    print("Terminating of the program.")
+                    exit()
+                else:
+                    answer.lower().strip() == "yes"
+                    break
         else:
             print(separator)
             print("""The correct number was not entered.
 Terminating of the program...""")
-        print(separator)
+            print(separator)
+            exit()
     else:
         print(separator)
         print("""Unregistered username or password.
