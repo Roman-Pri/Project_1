@@ -2,7 +2,7 @@
 projekt_1.py: první projekt do Engeto Online Python Akademie
 
 author: Ing. Roman Příhonský, MMS, MSS
-email: roman.prihonsky@gmail.com
+email:  roman.prihonsky83@gmail.com
 """
 # Initial data
 TEXTS = ["""
@@ -35,10 +35,10 @@ garpike and stingray are also present."""
 registered_users = {"bob":"123",
                     "ann":"pass123",
                     "mike":"password123",
-                    "liz": "pass123"}
+                    "liz":"pass123"}
 min_values = 1
 max_values = len(TEXTS)
-separator = 50*"*"
+separator = "*"*50
 attempts = 3
 # Main body of program - Inital enter
 while attempts > 0:
@@ -64,12 +64,11 @@ Terminating of the program...""")
 You have {attempts} attempts left.""")
         print(separator)
 while True:
-    selection = input(f"Please enter a number from {min_values} to {max_values} to select text:")
+    selection = input(f"Please enter an integer from {min_values} to {max_values} to select text:")
     if not selection.strip().isdigit():
         print(separator)
         print("An invalid symbol was entered.Terminating of the program...")
         print(separator)
-        break
         exit()
     elif min_values <= int(selection) <= max_values:
 # formulas for text analysis
@@ -115,7 +114,7 @@ while True:
                 exit()
     else:
         print(separator)
-        print("""The incorrect number was entered.
+        print("""The incorrect integer was entered.
 Terminating of the program...""")
         print(separator)
         exit()
