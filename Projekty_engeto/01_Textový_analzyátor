@@ -39,70 +39,83 @@ registered_users = {"bob":"123",
 min_values = 1
 max_values = len(TEXTS)
 separator = 50*"*"
+attempts = 3
 # Main body of program - Inital enter
-username = (input("Username:"))
-password = (input("Password:"))
-if registered_users.get(username) and registered_users[username] == password:
-    print(separator)
-    print(f"""Welcome to our company TEXT ANALYZER, {username.upper()}.
-We have prepared {max_values} texts available for analyzing.""")
-    print(separator)
-    while True:
-        selection = input(f"Please enter a number from {min_values} to {max_values} to select text:")
-        if not selection.strip().isdigit():
-            print(separator)
-            print("An invalid symbol was entered.Terminating of the program...")
-            print(separator)
-            break
-            exit()
-        elif min_values <= int(selection) <= max_values:
-# formulas for text analysis
-            selection_number = int(selection)
-            words = TEXTS[selection_number - 1].split()
-            number_of_words = len(words)
-            number_of_tc_words = len([word for word in words if word.istitle()])
-            number_of_uc_words = len([word for word in words if word.strip('.,!?;:').isupper() and word.isalpha()])
-            number_of_lc_words = len([word for word in words if word.strip(".,!?;:").islower()])
-            number_of_num_strings = len([word for word in words if word.isdigit()])
-            sum_of_numbers = sum([int(num) for num in words if num.isdigit()])
-            print(separator)
-            print(f"You have selected the text number:{selection_number}")
-            print(f"There are {number_of_words} words in the selected text.")
-            print(f"There are {number_of_tc_words} titlecase words.")
-            print(f"There are {number_of_uc_words} uppercase words.")
-            print(f"There are {number_of_lc_words} lowercase words.")
-            print(f"There are {number_of_num_strings} numeric strings.")
-            print(f"The sum of all numbers is {str(sum_of_numbers)}.")
-            print(separator)
-# graphic representation
-            occurrences = "OCCURRENCES"
-            length_counts = {}
-            for word in words: 
-                length = len(word.strip(".,!?;:"))
-                length_counts[length] = length_counts.get(length, 0) + 1
-            print(f"LEN|{occurrences:-^20}|NR")
-            for length in sorted(length_counts):
-                count = length_counts[length]
-                print(f"{length:>3}|{'#' * count:<20}|{count:<3}")
-            print(separator)
-# return back to analysis
-            while True:
-                answer = input(f"Do you want to a continue with analysis of other texts (\"yes\"/\"no\")?")
-                if answer.lower().strip() == "no":
-                    print("Terminating of the program.")
-                    exit()
-                else:
-                    answer.lower().strip() == "yes"
-                    break
-        else:
-            print(separator)
-            print("""The correct number was not entered.
-Terminating of the program...""")
-            print(separator)
-            exit()
-    else:
+while attempts > 0:
+    username = (input("Username:"))
+    password = (input("Password:"))
+    if registered_users.get(username) and registered_users[username] == password:
         print(separator)
-        print("""Unregistered username or password.
+        print(f"""Welcome to our company TEXT ANALYZER, {username.upper()}.
+We have {max_values} text(s) available for analysis.""")
+        print(separator)
+        break
+    else:
+        attempts = attempts - 1
+        if attempts == 0:
+            print(separator)
+            print("""Unregistered username or password.
 Please contact the company administrator.
 Terminating of the program...""")
+            print(separator)
+            exit()
         print(separator)
+        print(f"""You insert unregistered name or password.
+You have {attempts} attempts left.""")
+        print(separator)
+while True:
+    selection = input(f"Please enter a number from {min_values} to {max_values} to select text:")
+    if not selection.strip().isdigit():
+        print(separator)
+        print("An invalid symbol was entered.Terminating of the program...")
+        print(separator)
+        break
+        exit()
+    elif min_values <= int(selection) <= max_values:
+# formulas for text analysis
+        selection_number = int(selection)
+        words = TEXTS[selection_number - 1].split()
+        number_of_words = len(words)
+        number_of_tc_words = len([word for word in words if word.istitle()])
+        number_of_uc_words = len([word for word in words if word.strip('.,!?;:').isupper() and word.isalpha()])
+        number_of_lc_words = len([word for word in words if word.strip(".,!?;:").islower()])
+        number_of_num_strings = len([word for word in words if word.isdigit()])
+        sum_of_numbers = sum([int(num) for num in words if num.isdigit()])
+        print(separator)
+        print(f"You have selected the text number:{selection_number}")
+        print(f"There are {number_of_words} words in the selected text.")
+        print(f"There are {number_of_tc_words} titlecase words.")
+        print(f"There are {number_of_uc_words} uppercase words.")
+        print(f"There are {number_of_lc_words} lowercase words.")
+        print(f"There are {number_of_num_strings} numeric strings.")
+        print(f"The sum of all numbers is {str(sum_of_numbers)}.")
+        print(separator)
+# graphic representation
+        occurrences = "OCCURRENCES"
+        length_counts = {}
+        for word in words: 
+            length = len(word.strip(".,!?;:"))
+            length_counts[length] = length_counts.get(length, 0) + 1
+        print(f"LEN|{occurrences:-^20}|NR")
+        for length in sorted(length_counts):
+            count = length_counts[length]
+            print(f"{length:>3}|{'#' * count:<20}|{count:<3}")
+        print(separator)
+# return to analysis of selected texts
+        while True:
+            answer = input("Do you want to continue analyzing other texts (yes/no)?")
+            if answer.lower().strip() == "no":
+                print("Terminating of the program.")
+                print(separator)
+                exit()
+            elif answer.lower().strip() == "yes":
+                break
+            else:
+                print("An invalid symbol was entered.Terminating of the program...")
+                exit()
+    else:
+        print(separator)
+        print("""The incorrect number was entered.
+Terminating of the program...""")
+        print(separator)
+        exit()
