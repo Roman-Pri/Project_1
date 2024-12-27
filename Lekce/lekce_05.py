@@ -122,3 +122,16 @@ while True:
        break
    else:
        print("Špatná hodnota, zkus to znovu")
+
+
+#ukoly v hodine
+pismena = ["a", "a", "b", "c", "d", "a", "e", "g", "m"]
+
+while pismena:
+    print(pismena)
+    pismeno = input("Vyhod pismeno:")
+    if pismeno in pismena:
+        print("Nasel jsi pismeno")
+        pismena.remove(pismeno)
+    else:
+        print("Odstranil jsi pismena")
