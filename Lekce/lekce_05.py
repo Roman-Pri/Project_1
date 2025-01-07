@@ -135,3 +135,4 @@ while pismena:
         pismena.remove(pismeno)
     else:
         print("Odstranil jsi pismena")
+
