@@ -62,3 +62,5 @@ print(
 print("muj_modul" in dir())
 
 
+#doplneni z lekce - kdyz modul neni ve slozce(v balicku)
+import zkouska.mesta #jdeme do slozky zkouska a do souboru mesta
