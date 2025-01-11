@@ -1,8 +1,12 @@
 # prvni cviceni
-#Vytvoř proměnnou veta, typu str, která obsahuje hodnotu: "Zvuk řeči je produkován poměrně otevřenou konfigurací vokálního traktu",proměnnou samohlasky, typu str, která obsahuje 'aeiouáéíóú',proměnnou souhlasky, typu str, která obsahuje 'bcčdďfghjklmnňprřsštťvzžcdž',proměnnou vysledek, typu dict, který obsahuje klíče "souhlasky" a "samohlasky". Slovník bude evidovat výskyty těchto hodnot,iteraci přes všechny znaky v proměnné veta,pokud znak není ani samohláska, ani souhláska, tak jej přeskoč,pokud je znak samohláska nebo souhláska, inkrementuj ve slovníku vysledek správný klíč,nakonec vypiš konečný stav podle ukázky níže.
+#Vytvoř proměnnou veta, typu str, která obsahuje hodnotu: "Zvuk řeči je produkován poměrně otevřenou konfigurací vokálního traktu",
+# proměnnou samohlasky, typu str, která obsahuje 'aeiouáéíóú',
+# proměnnou souhlasky, typu str, která obsahuje 'bcčdďfghjklmnňprřsštťvzžcdž',
+# proměnnou vysledek, typu dict, který obsahuje klíče "souhlasky" a "samohlasky". 
+# Slovník bude evidovat výskyty těchto hodnot,iteraci přes všechny znaky v proměnné veta,pokud znak není ani samohláska, ani souhláska, tak jej přeskoč,pokud je znak samohláska nebo souhláska, inkrementuj ve slovníku vysledek správný klíč,nakonec vypiš konečný stav podle ukázky níže.
+
 # Zadaná proměnná
 veta = 'Zvuk řeči je produkován poměrně otevřenou konfigurací vokálního traktu'
-
 vysledky = {"samohlasky":0, "souhlasky":0}
 samohlasky = "aeiouáéíóúů"
 souhlasky = "bcčdďfghjklmnňprsštťvzžxwy"

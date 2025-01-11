@@ -1,10 +1,18 @@
 # cviceni c.1 priklad indexovani
-print ("indexovani"[:5])
-print ("indexovani"[-5:])
-print ("indexovani"[::3])
+# Prvních 5 písmen slova 'indexování',
+# posledních 5 písmen slova 'indexování',
+# každé třetí písmeno slova 'indexování' (počínaje prvním písmenem "i"),
+# všechny výstupy zapiš přímo do funkce print,výstup dále úprav podle ukázky níže.
+print("Prvnich 5 pismen")
+print("indexovani"[:5])
+print("Poslednich 5 pismen")
+print("indexovani"[-5:])
+print("Kazde 3 pismeno slova (pocinaje prvnim)")
+print("indexovani"[::3])
 
 
 # cviceni c.1 priklad prevod jednotek
+# Převod z kilogramů na libry,z kilometrů na míle,z litrů na galony.
 # prevodni hodnoty
 kg_lb = 2.20
 km_mile = 0.62
