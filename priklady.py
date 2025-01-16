@@ -200,3 +200,7 @@ for email in emails:
     domeny.append(domena)
 sorted
 print(domeny)
+
+
+
+

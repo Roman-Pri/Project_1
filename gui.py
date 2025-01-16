@@ -20,3 +20,4 @@ tlacitko.pack()
 # Spuštění aplikace
 okno.mainloop()
 
+print(dir(tk))
