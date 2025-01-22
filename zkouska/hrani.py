@@ -25,6 +25,9 @@ def gener(czech_first_names, czech_surnames):
 print(gener(czech_first_names, czech_surnames))
 
 
+print()
+
+
 
 
 

@@ -15,7 +15,25 @@ import matplotlib       # zobrazeni statistik
 def run_new_game():
     for widget in window.winfo_children():
         widget.destroy()
-        
+    # opening label
+    gra_for = "-" * 64
+    opening_text_label = ("Hi there!\n" + 
+        gra_for + 
+        "\nI've generated a random 4 digit number for you.\n"
+        "Let's play Bulls and Cows game.\n" +
+        gra_for +
+        "\nInsert the number and press Enter button:"
+    )
+    label = tkinter.Label(window, text = opening_text_label, font = ("Arial", 20), background = "green", justify = "left")
+    label.place(x = 10, y = 10)
+    # entry label
+    entry = tkinter.Entry(window, font = ("Arial", 16), width = 10,)
+    entry.place(x = 10, y = 220)
+    # time label
+    time_label = tkinter.Label(window, text="Game Time - 0:00", font=("Arial", 30), background = "green", justify = "right")
+    time_label.place(x = 940, y = 10)
+    
+    
 # 1.GUI
 # 1.1 Window
 window = tkinter.Tk()
