@@ -192,7 +192,7 @@ def run_new_game(window):
                 font=("Arial", 20),
                 width=15,
                 height=2,
-                command=run_new_game,
+                command=lambda: run_new_game(window),
             ).place(x=200, y=300)
             tk.Button(
                 window,
