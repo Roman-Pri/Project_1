@@ -11,13 +11,11 @@ import tkinter as tk    # GUI
 
 # 1. Functions for game logic
 
-
 def generate_secret_number():
     while True:
         secret_number = random.sample(range(10), 4)
         if secret_number[0] != 0:
             return secret_number
-
 
 def verify_guess(guess):
     if len(guess) != 4:
@@ -31,7 +29,6 @@ def verify_guess(guess):
         return False, "Your guess must not start with 0."
     return True, ""
 
-
 def evaluate_guess(secret_number, guess_digits):
     bulls = sum(1 for i in range(4) if secret_number[i] == guess_digits[i])
     cows = sum(
@@ -42,16 +39,13 @@ def evaluate_guess(secret_number, guess_digits):
     )
     return bulls, cows
 
-
 # 2. Functions for stopwatch
-
 
 def start_stopwatch(time_label, stopwatch):
     if stopwatch["start_time"] is None:
         stopwatch["start_time"] = datetime.datetime.now()
         stopwatch["stop_time"] = False
         update_time(time_label, stopwatch)
-
 
 def stop_stopwatch(time_label, stopwatch):
     stopwatch["stop_timer"] = True
@@ -62,7 +56,6 @@ def stop_stopwatch(time_label, stopwatch):
     stopwatch["stop_timer"] = True
     return game_time
 
-
 def update_time(time_label, stopwatch):
     if stopwatch["stop_timer"]:
         return
@@ -72,9 +65,7 @@ def update_time(time_label, stopwatch):
     time_label.config(text=f"Game Time - {game_time}")
     time_label.after(1000, update_time, time_label, stopwatch)
 
-
 # 3. Game
-
 
 def run_new_game(window):
     for widget in window.winfo_children():
@@ -211,8 +202,8 @@ def run_new_game(window):
 
     entry.bind("<Return>", check_guess)
 
-
 # 4. GUI - inital window setup
+
 def main():
     window = tk.Tk()
     screen_width, screen_height = (
