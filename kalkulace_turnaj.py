@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-from tkinter import Label
 
 # Pevná proměnná
 POCET_TRENERU_NA_ZAPAS = 2
@@ -15,16 +14,16 @@ def spocitat_naklady():
         cena_za_rozhodci = float(entry_cena_rozhodci.get())
         cena_za_zdravotnik = float(entry_cena_zdravotnik.get())
         cena_za_vybaveni = float(entry_cena_vybaveni.get())
-        
+
         # Běžné výdaje
         cena_za_oceneni = float(entry_cena_oceneni.get())
         cena_za_obcerstveni = float(entry_cena_obcerstveni.get())
         cena_za_cestovne = float(entry_cena_cestovne.get())
-        
+
         # Investiční výdaje
         cena_za_marketing = float(entry_cena_marketing.get())
         cena_za_merch = float(entry_cena_merch.get())
-        
+
         # 2. Početní parametry
         pocet_hracu = int(entry_pocet_hracu.get())
         pocet_brankaru = int(entry_pocet_brankaru.get())
@@ -36,18 +35,18 @@ def spocitat_naklady():
         rozhodci_na_zapas = int(entry_pocet_rozhodci.get())
         pocet_organizatoru = int(entry_pocet_organizatoru.get())
         zdravotni_zabezpeceni = int(entry_pocet_zdravotni_zabezpeceni.get())
-        
+
         # 3. Výpočty
         # Výpočet počtu zápasů na skupinu
         zapasy_na_skupinu = zapasy_na_tym_skupina * pocet_tyms_ve_skupine // 2
-        
+
         # Výpočet celkového počtu zápasů na turnaj (pro všechny skupiny)
         celkovy_pocet_zapasu_na_turnaj = (zapasy_na_skupinu * pocet_skupin) + zapasy_playoff
-        
+
         # Výpočet počtu hráčů a brankářů
         celkovy_pocet_hracu = pocet_hracu * pocet_tyms_ve_skupine * pocet_skupin
         celkovy_pocet_brankaru = pocet_brankaru * pocet_tyms_ve_skupine * pocet_skupin
-        
+
         # Výpočty nákladů
         celkova_cena_led = cena_za_led * celkovy_pocet_zapasu_na_turnaj
         celkova_cena_treneri = cena_za_trener * celkovy_pocet_zapasu_na_turnaj
@@ -62,10 +61,8 @@ def spocitat_naklady():
         celkova_cena_cestovne = cena_za_cestovne
 
         # Celkové náklady
-        celkova_cena_za_turnaj = (celkova_cena_led + celkova_cena_treneri + celkova_cena_rozhodci +
-                           celkova_cena_zdravotnik + celkova_cena_oceneni + celkova_cena_obcerstveni +
-                           celkova_cena_marketing + celkova_cena_merch + celkova_cena_vybaveni +
-                           celkova_cena_cestovne)
+        celkova_cena_za_turnaj = (celkova_cena_led + celkova_cena_treneri + celkova_cena_rozhodci + celkova_cena_zdravotnik + celkova_cena_oceneni + celkova_cena_obcerstveni +
+                           celkova_cena_marketing + celkova_cena_merch + celkova_cena_vybaveni + celkova_cena_cestovne)
 
         # Výpočty poplatku na jednoho hráče
         minimalni_cena_za_jednoho_hrace = celkova_cena_za_turnaj / (celkovy_pocet_hracu + celkovy_pocet_brankaru)
@@ -75,7 +72,7 @@ def spocitat_naklady():
 
         # Výpočty ceny turnaje pro hrace s maržemi
         ceny_s_marzi = [round(minimalni_cena_za_jednoho_hrace * (1 + m / 100), 2) for m in marze]
-        
+
         # Funkce pro výpočet výdělku
         def vypocet_vydelku(celkova_cena_za_turnaj):
             vysledky = []
@@ -84,17 +81,17 @@ def spocitat_naklady():
                 vysledky.append((m, round(vydelek, 2)))  # Zaokrouhlení na dvě desetinná místa
 
             return vysledky
-            
+
         vysledky = vypocet_vydelku(celkova_cena_za_turnaj)
 
         # Vytvoření nového okna pro zobrazení výsledků
         vysledek_okno = tk.Toplevel(root)
         vysledek_okno.title("Výsledky")
-        
+
         # Vytvoření textového widgetu pro zobrazení výsledků
         text_widget = tk.Text(vysledek_okno, height=38, width=50, wrap=tk.WORD)
         text_widget.pack(padx=20, pady=20)
-    
+
         # Seznam všech popisů pro ceny
         popisy = [
     "Cena za pronájem ledu:",
@@ -114,7 +111,7 @@ def spocitat_naklady():
     "Celkový počet zápasů na skupinu:",
     "Celkový počet zápasů na turnaj:"
 ]
-        
+
     # Přidání popisů pro marže
         popisy_marze = [
     "Cena na jednoho hráče s 20% marží:",
@@ -144,16 +141,15 @@ def spocitat_naklady():
     zapasy_na_skupinu,
     celkovy_pocet_zapasu_na_turnaj
 ]
-        
         # Maximální délka popisu pro zarovnání hodnot
         max_délka_popisu = max(len(popis) for popis in popisy)
 
-        # Konfigurace pro zvýraznění 
+        # Konfigurace pro zvýraznění
         text_widget.tag_configure("highlight", foreground="red")
         text_widget.tag_configure("highlight2", foreground="green")
-        
+
         # Vytvoření textu s cenami a výsledky s dynamickým formátováním
-        text_widget.config(state=tk.NORMAL)  
+        text_widget.config(state=tk.NORMAL)
         for i, (popis, hodnota) in enumerate(zip(popisy, hodnoty)):
             if popis == "Celková cena za celý turnaj:":
             # Zvýraznění celkové ceny za turnaj
@@ -166,14 +162,14 @@ def spocitat_naklady():
             else:
                 # Zobrazení ceny s "Kč"
                 text_widget.insert(tk.END, f"{popis.ljust(max_délka_popisu)} {str(hodnota).rjust(10)} Kč\n")
-        
+
         text_widget.insert(tk.END, f"{50*'-'}\n")
         text_widget.insert(tk.END, f"Cena na jednoho hráče:{minimalni_cena_za_jednoho_hrace:24.0f} Kč\n", "highlight2")
         for popis, ceny in zip(popisy_marze, ceny_s_marzi):
             text_widget.insert(tk.END, f"{popis.ljust(max_délka_popisu)} {str(round(ceny)).rjust(10)} Kč\n", "highlight2")
-        
+
         text_widget.insert(tk.END, f"{50*'-'}\n")
-        
+
         for marze, vydelek in vysledky:
             text_widget.insert(tk.END, f"Výdělek s marží {marze:3}%: {vydelek:24.0f} Kč\n", "highlight2")
 
